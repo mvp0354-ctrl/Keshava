@@ -1,0 +1,26 @@
+Tippani Keshava Language Demo
+
+Aarambha
+
+Tippani Declare Variables
+
+Sankhya x = 15
+Sankhya y = 25
+
+Tippani Print Sum
+
+Likha(x + y)
+
+Tippani {
+
+This section demonstrates
+multi-line comments.
+
+These lines are ignored
+by the compiler.
+
+}
+
+Likha("Program Completed")
+
+Samaapti

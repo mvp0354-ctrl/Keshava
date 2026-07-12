@@ -1,0 +1,20 @@
+Aarambha
+
+Sankhya age = Grahana()
+
+Paatha name = Grahana()
+
+Likha(name)
+
+Yadi(age >= 18){
+
+    Likha("Adult")
+
+}
+Anyathaa{
+
+    Likha("Minor")
+
+}
+
+Samaapti

@@ -1,0 +1,85 @@
+Keshava Grammar (EBNF-style)
+============================
+
+program        := "Aarambha" statement* "Samaapti"
+
+statement       := comment
+                 | var_declaration
+                 | assignment
+                 | print_stmt
+                 | if_stmt
+                 | while_stmt
+                 | function_decl
+                 | return_stmt
+                 | function_call_stmt
+
+comment         := single_comment
+                 | multi_comment
+
+single_comment  := "Tippani" <text>
+multi_comment   := "Tippani" "{" <text> "}"
+
+var_declaration := datatype IDENTIFIER "=" expression
+datatype        := "Sankhya" | "Paatha" | "Satyam"
+
+assignment      := IDENTIFIER "=" expression
+
+print_stmt      := "Likha" "(" expression ")"
+
+if_stmt         := "Yadi" "(" expression ")" block ( "Anyathaa" block )?
+
+while_stmt      := "Yaavat" "(" expression ")" block
+
+function_decl   := "Kriyaa" IDENTIFIER "(" params? ")" block
+params          := IDENTIFIER ( "," IDENTIFIER )*
+
+return_stmt     := "Pratyaagaccha" expression?
+
+function_call_stmt := function_call
+
+block           := "{" statement* "}"
+
+expression      := comparison
+
+comparison      := term ( ( "==" | "!=" | "<" | ">" | "<=" | ">=" ) term )*
+
+term            := factor ( ( "+" | "-" ) factor )*
+
+factor          := primary ( ( "*" | "/" | "%" ) primary )*
+
+primary         := NUMBER
+                 | STRING_LITERAL
+                 | "Satya"
+                 | "Asatya"
+                 | IDENTIFIER
+                 | function_call
+                 | "(" expression ")"
+
+function_call   := IDENTIFIER "(" arguments? ")"
+arguments       := expression ( "," expression )*
+
+
+Keyword reference
+------------------
+Aarambha        Start of program
+Samaapti        End of program
+Sankhya         Integer declaration
+Paatha          String declaration
+Satyam          Boolean declaration
+Satya / Asatya  Boolean literals (true / false)
+Likha           Print
+Yadi / Anyathaa If / Else
+Yaavat          While
+Punah           For        (reserved, not yet implemented)
+Kriyaa          Function
+Pratyaagaccha   Return
+Grahana         Input      (reserved, not yet implemented)
+
+Notes
+-----
+* Newlines and whitespace are insignificant; statements are delimited
+  purely by their grammatical shape, and an optional trailing ";" is
+  also accepted after simple statements.
+* "Punah" (for-loops) and "Grahana" (input) are recognized as keywords
+  in tokens.py but do not yet have parser/interpreter support in this
+  version. "Yaavat" (while) covers repetition for now.

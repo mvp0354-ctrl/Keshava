@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keshava — Online Compiler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">Keshava</span>
+    <span class="tagline">an online compiler for a Sanskrit-keyword toy language</span>
+  </div>
+
+  <div class="actions">
+    <span id="status-pill" class="status-pill status-idle">idle</span>
+    <button id="reset-btn" class="btn btn-ghost" title="Reset to sample program">Reset</button>
+    <button id="run-btn" class="btn btn-primary" title="Run (Ctrl / Cmd + Enter)">
+      <span class="run-icon">▶</span> Run
+    </button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="pane editor-pane">
+    <div class="pane-header">
+      <span><Keshav class="msm"></Keshav></span>
+      <span class="pane-hint">Ctrl/Cmd + Enter to run</span>
+    </div>
+    <div id="editor"></div>
+  </section>
+
+  <section class="pane console-pane">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="output">Console</button>
+      <button class="tab-btn" data-tab="tokens">Tokens</button>
+      <button class="tab-btn" data-tab="ast">AST</button>
+      <button class="tab-btn" data-tab="keywords">Keywords</button>
+    </div>
+
+    <div class="tab-panels">
+      <pre id="panel-output" class="tab-panel active" data-panel="output"><span class="hint-text">Output will appear here after you run your program.</span></pre>
+
+      <pre id="panel-tokens" class="tab-panel" data-panel="tokens"><span class="hint-text">Token stream will appear here after you run your program.</span></pre>
+
+      <pre id="panel-ast" class="tab-panel" data-panel="ast"><span class="hint-text">The parsed AST will appear here after you run your program.</span></pre>
+
+      <div id="panel-keywords" class="tab-panel keywords-panel" data-panel="keywords">
+        <table class="keyword-table">
+          <thead><tr><th>Meaning</th><th>Keyword</th></tr></thead>
+          <tbody>
+            <tr><td>Start</td><td>Aarambha</td></tr>
+            <tr><td>End</td><td>Samaapti</td></tr>
+            <tr><td>Integer</td><td>Sankhya</td></tr>
+            <tr><td>String</td><td>Paatha</td></tr>
+            <tr><td>Boolean</td><td>Satyam</td></tr>
+            <tr><td>True / False</td><td>Satya / Asatya</td></tr>
+            <tr><td>Print</td><td>Likha</td></tr>
+            <tr><td>If / Else</td><td>Yadi / Anyathaa</td></tr>
+            <tr><td>While</td><td>Yaavat</td></tr>
+            <tr><td>Function</td><td>Kriyaa</td></tr>
+            <tr><td>Return</td><td>Pratyaagaccha</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/monaco-editor@0.47.0/min/vs/loader.js"></script>
+<script id="default-code-data" type="application/json">{{ default_code | tojson }}</script>
+<script>
+  const DEFAULT_CODE = JSON.parse(document.getElementById('default-code-data').textContent);
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
