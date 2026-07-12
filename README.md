@@ -1,13 +1,13 @@
-# VedLang
+# Keshava
 
-VedLang is a small, Hindi/Sanskrit-keyword-inspired toy programming
+Keshava is a small, Hindi/Sanskrit-keyword-inspired toy programming
 language, implemented in Python. It supports variables, printing,
 conditionals, while loops, and functions with return values.
 
 ## Project structure
 
 ```
-VedLang/
+Keshava/
 ├── main.py          # Runs the language
 ├── lexer.py         # Lexical analyzer (source code -> tokens)
 ├── parser.py        # Parser (tokens -> AST)
@@ -15,7 +15,7 @@ VedLang/
 ├── tokens.py         # Token / keyword definitions
 ├── ast_nodes.py      # AST node classes
 ├── grammar.txt        # Grammar rules
-├── sample.ved          # Example VedLang program
+├── keshav.msm          # Example Keshava program
 └── README.md           # This file
 ```
 
@@ -29,7 +29,7 @@ VedLang/
 | If        | Yadi          |
 | Else      | Anyathaa      |
 | While     | Yaavat        |
-| For       | Punah *(reserved)* |
+| For       | Punah *(resermsm)* |
 | Integer   | Sankhya       |
 | String    | Paatha        |
 | Boolean   | Satyam        |
@@ -37,7 +37,7 @@ VedLang/
 | False     | Asatya        |
 | Function  | Kriyaa        |
 | Return    | Pratyaagaccha |
-| Input     | Grahana *(reserved)* |
+| Input     | Grahana *(resermsm)* |
 
 `Punah` (for-loops) and `Grahana` (input) are recognized by the lexer
 but do not yet have parser/interpreter support — see "Known
@@ -46,7 +46,7 @@ limitations" below.
 ## Running a program
 
 ```bash
-python main.py sample.ved
+python main.py keshav.msm
 ```
 
 ## Example
